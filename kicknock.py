@@ -25,9 +25,10 @@ def assign_multiplier():
     return mul
 
 def addict(dictarray, purearray):
-    pair = zip(dictarray.keys(), len(dictarray.values()))
+    pair = zip(dictarray.keys(), dictarray.values())
     start = 0; end = 0
-    for key, num in pair:
+    for key, value in pair:
+        num = len(value)
         start, end = end, end + num 
         dictarray[key] = dictarray[key] + purearray[start:end]
     return dictarray
