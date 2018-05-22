@@ -87,7 +87,7 @@ for element in elements:
     cmd='cat %s >> POTCAR' %(potcar)
     
     if os.path.exists(potcar):
-        subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+        subprocess.call(cmd, shell=True)
     else:
         raise IOError('The POTCAR of %s element does not exist!!' %potcar)
             

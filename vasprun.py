@@ -77,8 +77,14 @@ def AssignVersion():
     print ('PS: gammampi is twice as fast, but only for use in gamma point.')	
     version=raw_input('I want to use (defalut: mpi): ').lower().strip()
 	
-    if version == '' or version not in avblver:
-        version='mpi'
+    if version == '':
+        version = avblver[0] #mpi
+    elif version[0] == 'm': 
+        version = avblver[0] #mpi
+    elif version[0] == 'g':
+        version = avblver[1] #gammampi
+    else:
+        version = avblver[0] #mpi
 
     return version
 
@@ -130,10 +136,10 @@ wait
     return scrname
 
 #Main Program
-vaspinputs=('INCAR', 'POSCAR', 'POTCAR', 'KPOINTS')
-missings=[vaspinput for vaspinput in vaspinputs if not os.path.exists(vaspinput)]
-if len(missings) != 0:
-    raise IOError('%s files are not found.' %(missings))
+#vaspinputs=('INCAR', 'POSCAR', 'POTCAR', 'KPOINTS')
+#missings=[vaspinput for vaspinput in vaspinputs if not os.path.exists(vaspinput)]
+#if len(missings) != 0:
+#    raise IOError('%s files are not found.' %(missings))
 
 argulen=len(sys.argv)
 if argulen == 1:
